@@ -13,6 +13,7 @@ declare class Test {
   tearDown(fn: (any) => any)
   setTimeout(n: number)
   endAll()
+  end()
   threw(er: Error, extra?: Error, proxy?: Test)
   pragma(set: Options.Pragma)
   plan(n: number, comment?: string)
