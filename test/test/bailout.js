@@ -23,7 +23,7 @@ t.test('async kid', function (t) {
     t.pass('first timeout', { foo: 'blz' })
   }, 50)
   setTimeout(function () {
-    t.bailout('cannot continue')
+    t.bailout('# # # cannot continue')
   })
 })
 
@@ -31,4 +31,5 @@ t.pass('pass after async kid')
 
 t.end()
 
+// @ts-ignore
 t.pipe(process.stdout)

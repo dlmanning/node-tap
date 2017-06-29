@@ -8,7 +8,7 @@ function hijackedSpawn (cmd, args, options) {
   if (throwNow) {
     throw throwNow
   }
-  var child = spawn.call(cp, cmd, args, options)
+  var child = spawn.apply(this, arguments)
   if (throwLater) {
     setTimeout(function () {
       child.emit('error', throwLater)
@@ -22,6 +22,7 @@ var ok = require.resolve('./ok.js')
 var node = process.execPath
 
 t.test('spawn that throws', function (t) {
+  // @ts-ignore
   throwNow = new Error('now is fine')
   t.tearDown(function () {
     throwNow = false
@@ -31,6 +32,7 @@ t.test('spawn that throws', function (t) {
 })
 
 t.test('spawn that throws', function (t) {
+  // @ts-ignore
   throwLater = new Error('later is fine')
   t.tearDown(function () {
     throwLater = false
